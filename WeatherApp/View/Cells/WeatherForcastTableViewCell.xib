@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="95" id="t6j-OC-0In" customClass="WeatherForcastTableViewCell" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t6j-OC-0In" id="nnf-ag-2uQ">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IhY-6R-8um">
+                        <rect key="frame" x="15" y="5" width="384" height="85"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfV-Qv-J2p">
+                                <rect key="frame" x="0.0" y="0.0" width="33" height="17.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWT-co-mJS">
+                                <rect key="frame" x="0.0" y="22.5" width="33" height="17.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TF4-pa-ObK">
+                                <rect key="frame" x="0.0" y="45" width="33" height="17.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UR4-Ac-zME">
+                                <rect key="frame" x="0.0" y="67.5" width="33" height="17.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="IhY-6R-8um" secondAttribute="trailing" constant="15" id="2DS-7B-0Bb"/>
+                    <constraint firstAttribute="bottom" secondItem="IhY-6R-8um" secondAttribute="bottom" constant="5" id="br6-If-gwu"/>
+                    <constraint firstItem="IhY-6R-8um" firstAttribute="top" secondItem="nnf-ag-2uQ" secondAttribute="top" constant="5" id="tzw-4t-egN"/>
+                    <constraint firstItem="IhY-6R-8um" firstAttribute="leading" secondItem="nnf-ag-2uQ" secondAttribute="leading" constant="15" id="wfF-aD-m6q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="applicableDateLabel" destination="UR4-Ac-zME" id="eco-0P-whi"/>
+                <outlet property="humidityLabel" destination="TF4-pa-ObK" id="ND0-Eq-1dc"/>
+                <outlet property="temperatureLabel" destination="FWT-co-mJS" id="hZx-Er-Nkl"/>
+                <outlet property="weatherStateLabel" destination="FfV-Qv-J2p" id="wl7-Rd-qmy"/>
+            </connections>
+            <point key="canvasLocation" x="-49.275362318840585" y="-249.44196428571428"/>
+        </tableViewCell>
+    </objects>
+</document>

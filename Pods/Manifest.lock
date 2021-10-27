@@ -1,0 +1,16 @@
+PODS:
+  - MaterialActivityIndicator (0.0.6)
+
+DEPENDENCIES:
+  - MaterialActivityIndicator
+
+SPEC REPOS:
+  trunk:
+    - MaterialActivityIndicator
+
+SPEC CHECKSUMS:
+  MaterialActivityIndicator: 5061a52fadf7d22533734f2d34806311331bc424
+
+PODFILE CHECKSUM: a23cb36401e1efbe3a54c46a6ecb2e34514e6773
+
+COCOAPODS: 1.10.1
