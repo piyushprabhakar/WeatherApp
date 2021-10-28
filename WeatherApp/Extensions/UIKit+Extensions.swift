@@ -7,15 +7,23 @@
 
 import UIKit
 
-extension UIStoryboard {
-    static let main = UIStoryboard(name: "Main", bundle: nil)
-    
-    func instantiateViewController<T: UIViewController>(_ viewControllerType: T.Type) -> T {
-        guard let viewController = instantiateViewController(withIdentifier: String(describing: viewControllerType.self)) as? T else {
-            fatalError("Unexpected view controller type for \(String(describing: viewControllerType.self))")
-        }
-        
-        return viewController
+protocol Storyboarded {
+    static func instantiate() -> Self
+}
+
+extension Storyboarded where Self: UIViewController {
+    static func instantiate() -> Self {
+        // this pulls out "MyApp.MyViewController"
+        let fullName = NSStringFromClass(self)
+
+        // this splits by the dot and uses everything after, giving "MyViewController"
+        let className = fullName.components(separatedBy: ".")[1]
+
+        // load our storyboard
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+
+        // instantiate a view controller with that identifier, and force cast as the type that was requested
+        return storyboard.instantiateViewController(withIdentifier: className) as! Self
     }
 }
 
@@ -34,3 +42,18 @@ extension UITableView {
         return cell
     }
 }
+
+
+/*
+ extension UIStoryboard {
+     static let main = UIStoryboard(name: "Main", bundle: nil)
+     
+     func instantiateViewController<T: UIViewController>(_ viewControllerType: T.Type) -> T {
+         guard let viewController = instantiateViewController(withIdentifier: String(describing: viewControllerType.self)) as? T else {
+             fatalError("Unexpected view controller type for \(String(describing: viewControllerType.self))")
+         }
+         
+         return viewController
+     }
+ }
+ */

@@ -19,7 +19,8 @@ class HomeViewPresenter: NSObject {
     weak var viewable: HomeViewViewable?
     var service: NetworkManagerProtocol = NetworkManager()
     var databaseManager = DatabaseManager()
-    
+    weak var coordinator: MainCoordinator?
+
     init(viewable: HomeViewViewable) {
         self.viewable = viewable
     }

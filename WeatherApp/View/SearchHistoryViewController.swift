@@ -11,16 +11,19 @@ protocol SearchHistoryViewable: AnyObject {
     func showResult()
 }
 
-class SearchHistoryViewController: UIViewController {
+class SearchHistoryViewController: UIViewController, Storyboarded {
     
     @IBOutlet var tableView: UITableView!
     
+    weak var coordinator: MainCoordinator?
+
     var dataSource: SearchHistoryTableViewDataSource?
     
     var presentable: SearchHistoryPresentable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "Search History"
         
         navigationController?.navigationBar.prefersLargeTitles = true

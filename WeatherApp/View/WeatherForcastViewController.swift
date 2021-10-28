@@ -12,11 +12,13 @@ protocol WeatherForcastViewable: AnyObject {
     func showResult()
 }
 
-class WeatherForcastViewController: UIViewController, UITableViewDelegate {
+class WeatherForcastViewController: UIViewController, Storyboarded {
     
 
     @IBOutlet weak var tableView: UITableView!
     
+    weak var coordinator: MainCoordinator?
+
     var dataSource: WeatherForcastTableViewDataSource?
     var locationID: Int = 0
     var presentable: WeatherForcastPresentable?

@@ -14,12 +14,14 @@ protocol HomeViewViewable: AnyObject {
     func showResult()
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, Storyboarded {
    
     @IBOutlet weak var statusLabel: UILabel!
     
     @IBOutlet var tableView: UITableView!
     
+    weak var coordinator: MainCoordinator?
+
     let searchController = UISearchController(searchResultsController: nil)
     
     var presentable: HomeViewPresentable?
@@ -97,8 +99,7 @@ class HomeViewController: UIViewController {
         getCurrentLocaationWeatherData(saveSerchedKeyword: true)
     }
     @IBAction func showSearchHistory(_ sender: UIButton) {
-        let searchResult = UIStoryboard.main.instantiateViewController(SearchHistoryViewController.self)
-        self.navigationController?.pushViewController(searchResult, animated: true)
+        coordinator?.showSearchHistory()
     }
 }
 
@@ -120,9 +121,7 @@ extension HomeViewController: UISearchBarDelegate {
 extension HomeViewController: HomeViewTableViewDataSourceDelegate {
     
     func homeViewTableViewDataSource(_ dataSource: HomeViewTableViewDataSource, deselectRowAt indexPath: IndexPath) {
-        let weatherForcastVC = UIStoryboard.main.instantiateViewController(WeatherForcastViewController.self)
-        weatherForcastVC.locationID = dataSource.locationSearchResult[indexPath.row].locationId
-        self.navigationController?.pushViewController(weatherForcastVC, animated: true)
+        coordinator?.showWeatherForcast(locationId: dataSource.locationSearchResult[indexPath.row].locationId)
     }
 }
 
