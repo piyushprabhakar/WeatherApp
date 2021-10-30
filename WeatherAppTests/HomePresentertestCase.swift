@@ -34,7 +34,7 @@ class HomePresentertestCase: XCTestCase {
 
     
     func testGetWeatherDataForCityName(){
-        sut.getWeatherData(location: nil, cityName: "Delhi")
+        sut.getWeatherData(islocationAvailable: false, cityName: "Delhi", saveSearchedKeyword: false)
         XCTAssertEqual(sut.locationSearhResult[0].title, "Delhi")
         XCTAssertEqual(sut.locationSearhResult[0].locationId, 2455920)
         XCTAssertEqual(sut.locationSearhResult[0].locationType, "City")
@@ -42,7 +42,7 @@ class HomePresentertestCase: XCTestCase {
     
     func testGetWeatherDataForCityNameReturnError(){
         networkManager.shouldReturnError = true
-        sut.getWeatherData(location: nil, cityName: "Delhi")
+        sut.getWeatherData(islocationAvailable: false, cityName: "Delhi", saveSearchedKeyword: false)
         XCTAssertTrue(sut.locationSearhResult.isEmpty)
     }
     

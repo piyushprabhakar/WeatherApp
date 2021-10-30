@@ -85,12 +85,8 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     
     private func getCurrentLocaationWeatherData(saveSerchedKeyword: Bool) {
-        LocationManager.shared.getUserLocation { [weak self] location in
-            self?.presentable?.getWeatherData(location: location, cityName: nil)
-            if saveSerchedKeyword {
-                self?.presentable?.saveData(location: location, cityName: nil)
-            }
-        } 
+            self.presentable?.getWeatherData(islocationAvailable: true, cityName: nil, saveSearchedKeyword: saveSerchedKeyword)
+            
     }
     
     //MARK:- IB Action
@@ -108,8 +104,7 @@ class HomeViewController: UIViewController, Storyboarded {
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let cityName = searchBar.text {
-            self.presentable?.getWeatherData(location: nil, cityName: cityName)
-            self.presentable?.saveData(location: nil, cityName: cityName)
+            self.presentable?.getWeatherData(islocationAvailable: false, cityName: cityName, saveSearchedKeyword: true)
         }
         searchController.dismiss(animated: true, completion: nil)
         searchBar.resignFirstResponder()

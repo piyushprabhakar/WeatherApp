@@ -11,15 +11,11 @@ import XCTest
 @testable import WeatherApp
 
 class MockHomeViewPresenter {
-    var getWeatherDataException: (expectation: XCTestExpectation?, location: CLLocation?, cityName: String?)
+    var getWeatherDataException: (expectation: XCTestExpectation?, location: CLLocation?, cityName: String?, saveSearchedKeyword: Bool)?
     var locationSearhResultExpectation: XCTestExpectation?
-    var saveDataExpectation: (expectation: XCTestExpectation, location: CLLocation, cityName: String)?
     
 }
 extension MockHomeViewPresenter: HomeViewPresentable {
-    func saveData(location: CLLocation?, cityName: String?) {
-        saveDataExpectation?.expectation.fulfill()
-    }
     
     var locationSearhResult: [LocationSearchResultModel] {
         locationSearhResultExpectation?.fulfill()
@@ -27,10 +23,8 @@ extension MockHomeViewPresenter: HomeViewPresentable {
         return []
     }
     
-    func getWeatherData(location: CLLocation?, cityName: String?) {
-        guard cityName == getWeatherDataException.cityName else {return}
-        getWeatherDataException.expectation?.fulfill()
+    func getWeatherData(islocationAvailable: Bool, cityName: String?, saveSearchedKeyword: Bool) {
+        guard cityName == getWeatherDataException?.cityName else {return}
+        getWeatherDataException?.expectation?.fulfill()
     }
-    
-    
 }

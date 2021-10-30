@@ -10,8 +10,7 @@ import CoreLocation
 
 protocol HomeViewPresentable {
     var locationSearhResult: [LocationSearchResultModel] {get}
-    func getWeatherData(location: CLLocation?, cityName: String?)
-    func saveData(location: CLLocation?, cityName: String?)
+    func getWeatherData(islocationAvailable: Bool, cityName: String?, saveSearchedKeyword: Bool)
 }
 
 class HomeViewPresenter: NSObject {
@@ -20,7 +19,8 @@ class HomeViewPresenter: NSObject {
     var service: NetworkManagerProtocol = NetworkManager()
     var databaseManager = DatabaseManager()
     weak var coordinator: MainCoordinator?
-
+    lazy var locationManager: LocationManagerProtocol = LocationManager(locationManager: CLLocationManager())
+    
     init(viewable: HomeViewViewable) {
         self.viewable = viewable
     }
@@ -33,13 +33,17 @@ class HomeViewPresenter: NSObject {
             }
             viewable?.showResult()
         }
+        
     }
     
-    func saveData(location: CLLocation?, cityName: String?) {
-        databaseManager.storeSearchkeywords(latitude: location?.coordinate.latitude, longitude: location?.coordinate.longitude, cityName: cityName)
+    private func saveData(location: CLLocation?, cityName: String?, saveSerchedKeyword: Bool) {
+        if saveSerchedKeyword {
+            databaseManager.storeSearchkeywords(latitude: location?.coordinate.latitude, longitude: location?.coordinate.longitude, cityName: cityName)
+        }
     }
     
-    func getWeatherData(location: CLLocation?, cityName: String?) {
+    
+    private func getWeatherData(location: CLLocation?, cityName: String?) {
         self.viewable?.state = .loading
         service.getLocationDetails(lat: location?.coordinate.latitude, long: location?.coordinate.longitude, cityName: cityName) { [weak self] result in
             switch result {
@@ -59,4 +63,23 @@ class HomeViewPresenter: NSObject {
     }
 }
 
-extension HomeViewPresenter: HomeViewPresentable {}
+
+extension HomeViewPresenter: HomeViewPresentable {
+    
+    func getWeatherData(islocationAvailable: Bool, cityName: String?, saveSearchedKeyword: Bool) {
+        var userLocation: CLLocation?
+        if islocationAvailable {
+            locationManager.getUserLocation { location in
+                userLocation = location
+                self.getWeatherData(location: location, cityName: cityName)
+                self.saveData(location: userLocation, cityName: cityName, saveSerchedKeyword: saveSearchedKeyword)
+                
+            }
+        } else {
+            self.getWeatherData(location: userLocation, cityName: cityName)
+            saveData(location: userLocation, cityName: cityName, saveSerchedKeyword: saveSearchedKeyword)
+            
+        }
+        
+    }
+}

@@ -8,16 +8,20 @@
 import UIKit
 import CoreLocation
 
+protocol LocationManagerProtocol {
+    func getUserLocation(completion: @escaping ((CLLocation) -> Void))
+}
+
 class LocationManager: NSObject, CLLocationManagerDelegate {
 
-    static let shared = LocationManager()
     
-    let locationManager = CLLocationManager()
+    var locationManager = CLLocationManager()
     
-    private override init() {}
+    init(locationManager: CLLocationManager) {
+        self.locationManager = locationManager
+    }
 
     var completion: ((CLLocation) -> Void)?
-
     
     func getUserLocation(completion: @escaping ((CLLocation) -> Void)) {
         self.completion = completion
@@ -37,3 +41,5 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     
 }
+
+extension LocationManager: LocationManagerProtocol {}
