@@ -16,24 +16,20 @@ protocol HomeViewViewable: AnyObject {
 
 class HomeViewController: UIViewController, Storyboarded {
    
-    @IBOutlet weak var statusLabel: UILabel!
-    
-    @IBOutlet var tableView: UITableView!
-    
-    weak var coordinator: MainCoordinator?
-
-    let searchController = UISearchController(searchResultsController: nil)
-    
-    var presentable: HomeViewPresentable?
-    
-    lazy var dataSource = HomeViewTableViewDataSource(delegate: self)
-    
-    private let activityIndicatorView = MaterialActivityIndicatorView()
-
     enum LoadingState {
         case loading, finished, empty, error
     }
     
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
+    
+    var presentable: HomeViewPresentable?
+    lazy var dataSource = HomeViewTableViewDataSource(delegate: self)
+    weak var coordinator: MainCoordinator?
+
+    private let activityIndicatorView = MaterialActivityIndicatorView()
+    let searchController = UISearchController(searchResultsController: nil)
+
     var state: LoadingState = .empty {
         didSet {
             switch state {
@@ -120,7 +116,7 @@ extension HomeViewController: HomeViewTableViewDataSourceDelegate {
     }
 }
 
-//MARK:- HomeView prptocol
+//MARK:- HomeView Protocol
 
 extension HomeViewController: HomeViewViewable {
     
@@ -130,9 +126,7 @@ extension HomeViewController: HomeViewViewable {
     }
     
     func showErrorMessage(message: NetworkError) {
-        let alert = UIAlertController(title: "Alert", message: message.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.showAlert(title: "Error", message: message.localizedDescription)
     }
 }
 

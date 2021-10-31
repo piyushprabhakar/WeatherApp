@@ -16,9 +16,7 @@ class SearchHistoryViewController: UIViewController, Storyboarded {
     @IBOutlet var tableView: UITableView!
     
     weak var coordinator: MainCoordinator?
-
     var dataSource: SearchHistoryTableViewDataSource?
-    
     var presentable: SearchHistoryPresentable?
     
     override func viewDidLoad() {

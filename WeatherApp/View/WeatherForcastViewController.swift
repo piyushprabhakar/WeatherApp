@@ -47,6 +47,7 @@ class WeatherForcastViewController: UIViewController, Storyboarded {
 extension WeatherForcastViewController: WeatherForcastViewable {
     
     func showErrorMessage(message: String) {
+        self.showAlert(title: "Error", message: message)
     }
     
     func showResult() {
