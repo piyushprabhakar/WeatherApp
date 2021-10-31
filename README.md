@@ -4,6 +4,15 @@ Xcode Version : 12.5
 
 Design Pattern : MVP
 
+### MVP Deign Pattern
+
+The role of the controller is replaced with a presenter.
+View is more loosely coupled to the model.
+The presenter is responsible for binding the model to the view.
+Interaction with the view is through an interface, making it easy to unit test.
+The view creates the presenter in this particular implementation.
+
+
 Screenshot
 
 ![Screenshot1](https://user-images.githubusercontent.com/14050203/138981505-bda31e55-2fac-4ba6-9960-2ab93781c3a1.png)
