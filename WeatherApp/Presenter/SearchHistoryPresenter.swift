@@ -15,7 +15,7 @@ protocol SearchHistoryPresentable {
 class SearchResultPresenter: NSObject {
     
     weak var viewable: SearchHistoryViewable?
-    let dataBaseManagerObject = DatabaseManager()
+    let dataBaseManagerObject: DatabaseManagerProtocol = DatabaseManager()
     
     var searchResultData: [SearchedKeywordModel] = [] {
         didSet {

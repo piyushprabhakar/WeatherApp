@@ -9,7 +9,12 @@ import UIKit
 import Foundation
 import CoreData
 
-class DatabaseManager: NSObject {
+protocol DatabaseManagerProtocol {
+    func storeSearchkeywords(latitude: Double?, longitude: Double?, cityName: String?)
+    func fetchSearchHistory() -> [SearchedKeywordModel]
+}
+
+class DatabaseManager: NSObject, DatabaseManagerProtocol {
     
     func storeSearchkeywords(latitude: Double?, longitude: Double?, cityName: String?) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -58,3 +63,5 @@ class DatabaseManager: NSObject {
         
     }
 }
+
+

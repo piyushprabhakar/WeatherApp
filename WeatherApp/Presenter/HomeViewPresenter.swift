@@ -17,8 +17,7 @@ class HomeViewPresenter: NSObject {
     
     weak var viewable: HomeViewViewable?
     var service: NetworkManagerProtocol = NetworkManager()
-    var databaseManager = DatabaseManager()
-    weak var coordinator: MainCoordinator?
+    var databaseManager: DatabaseManagerProtocol = DatabaseManager()
     lazy var locationManager: LocationManagerProtocol = LocationManager(locationManager: CLLocationManager())
     
     init(viewable: HomeViewViewable) {
@@ -83,3 +82,4 @@ extension HomeViewPresenter: HomeViewPresentable {
         
     }
 }
+

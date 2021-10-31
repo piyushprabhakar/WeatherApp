@@ -15,7 +15,7 @@ protocol WeatherForcastPresentable {
 class WeatherForcastPresenter: NSObject {
 
     weak var viewable: WeatherForcastViewable?
-    var service = NetworkManager()
+    var service: NetworkManagerProtocol = NetworkManager()
     
     var everyDayWeatherData: [EverydayWeatherModel] = [] {
         didSet {
