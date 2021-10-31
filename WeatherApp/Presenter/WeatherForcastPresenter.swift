@@ -34,7 +34,7 @@ class WeatherForcastPresenter: NSObject {
 
 extension WeatherForcastPresenter: WeatherForcastPresentable  {
     func getWeatherForcastData(locationId: Int) {
-        service.getWeatherPredection(locationID: locationId) { [weak self] result in
+        service.getWeatherForcast(locationID: locationId) { [weak self] result in
             switch result {
             case .success(let dataModel):
                 self?.everyDayWeatherData = dataModel.consolidatedWeatherReport

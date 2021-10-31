@@ -14,12 +14,12 @@ class MockNetworkManager {
     
     var shouldReturnError = false
     var getlocationWasCalled = false
-    var getWeatherPredectionWasCalled = false
+    var getWeatherForcastWasCalled = false
     
     func reset() {
         shouldReturnError = false
         getlocationWasCalled = false
-        getWeatherPredectionWasCalled = false
+        getWeatherForcastWasCalled = false
     }
     
 
@@ -54,7 +54,7 @@ extension MockNetworkManager: NetworkManagerProtocol {
         }
     }
     
-    func getWeatherPredection(locationID: Int, completionHandler: @escaping (Result<WeatherForcastModel, NetworkError>) -> Void) {
+    func getWeatherForcast(locationID: Int, completionHandler: @escaping (Result<WeatherForcastModel, NetworkError>) -> Void) {
         if shouldReturnError {
             completionHandler(.failure(.serviceError))
         }else{

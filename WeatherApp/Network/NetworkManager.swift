@@ -19,7 +19,7 @@ protocol NetworkManagerProtocol: AnyObject {
     
     func getLocationDetails(lat:Double?, long: Double?, cityName: String?, completionHandler: @escaping (Result<[LocationSearchResultModel], NetworkError>)-> Void)
     
-    func getWeatherPredection(locationID: Int, completionHandler: @escaping (Result<WeatherForcastModel, NetworkError>)-> Void)
+    func getWeatherForcast(locationID: Int, completionHandler: @escaping (Result<WeatherForcastModel, NetworkError>)-> Void)
 }
 
 
@@ -54,7 +54,7 @@ class NetworkManager: NSObject, NetworkManagerProtocol {
         }
     }
     
-    func getWeatherPredection(locationID: Int, completionHandler: @escaping (Result<WeatherForcastModel, NetworkError>)-> Void) {
+    func getWeatherForcast(locationID: Int, completionHandler: @escaping (Result<WeatherForcastModel, NetworkError>)-> Void) {
         
         let urlString = Constant.baseURL.appending(String(locationID))
 
