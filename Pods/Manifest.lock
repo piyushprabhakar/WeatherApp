@@ -1,16 +1,81 @@
 PODS:
+  - BoltProtocol (5.2.0):
+    - PackStream (~> 1.1.2)
+    - SwiftNIO (~> 2.19.0)
+    - SwiftNIOSSL (~> 2.8.0)
+    - SwiftNIOTransportServices (~> 1.7.0)
+  - CNIOAtomics (2.19.0)
+  - CNIOBoringSSL (2.8.0)
+  - CNIOBoringSSLShims (2.8.0):
+    - CNIOBoringSSL (= 2.8.0)
+  - CNIODarwin (2.19.0)
+  - CNIOLinux (2.19.0)
+  - CNIOSHA1 (2.19.0)
   - MaterialActivityIndicator (0.0.6)
+  - PackStream (1.1.2)
+  - SwiftNIO (2.19.0):
+    - CNIOAtomics (= 2.19.0)
+    - CNIODarwin (= 2.19.0)
+    - CNIOLinux (= 2.19.0)
+    - CNIOSHA1 (= 2.19.0)
+    - SwiftNIOConcurrencyHelpers (= 2.19.0)
+  - SwiftNIOConcurrencyHelpers (2.19.0):
+    - CNIOAtomics (= 2.19.0)
+  - SwiftNIOFoundationCompat (2.19.0):
+    - SwiftNIO (= 2.19.0)
+  - SwiftNIOSSL (2.8.0):
+    - CNIOBoringSSL (= 2.8.0)
+    - CNIOBoringSSLShims (= 2.8.0)
+    - SwiftNIO (< 3, >= 2.19.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.19.0)
+    - SwiftNIOTLS (< 3, >= 2.19.0)
+  - SwiftNIOTLS (2.19.0):
+    - SwiftNIO (= 2.19.0)
+  - SwiftNIOTransportServices (1.7.0):
+    - SwiftNIO (< 3, >= 2.19.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.19.0)
+    - SwiftNIOFoundationCompat (< 3, >= 2.19.0)
+    - SwiftNIOTLS (< 3, >= 2.19.0)
 
 DEPENDENCIES:
+  - BoltProtocol
   - MaterialActivityIndicator
 
 SPEC REPOS:
   trunk:
+    - BoltProtocol
+    - CNIOAtomics
+    - CNIOBoringSSL
+    - CNIOBoringSSLShims
+    - CNIODarwin
+    - CNIOLinux
+    - CNIOSHA1
     - MaterialActivityIndicator
+    - PackStream
+    - SwiftNIO
+    - SwiftNIOConcurrencyHelpers
+    - SwiftNIOFoundationCompat
+    - SwiftNIOSSL
+    - SwiftNIOTLS
+    - SwiftNIOTransportServices
 
 SPEC CHECKSUMS:
+  BoltProtocol: 84f9fb40462144018811faca6b30dad092b77153
+  CNIOAtomics: 0d87ebc16f126fdd9c4e68f1a37092e5fc43d531
+  CNIOBoringSSL: 00a461e12f1cb148a692df457d6122dca985accf
+  CNIOBoringSSLShims: 61d154803c5841e2abf41986df74efd25b1e1cc8
+  CNIODarwin: cf4bc6a7e61310d5d2ddb7dd80a419aa53a03047
+  CNIOLinux: 87a599ed230ac8dbdd2846ab989da9af685f90ef
+  CNIOSHA1: 5d878498c8a1e9eef54b849a0914ac839256dbb9
   MaterialActivityIndicator: 5061a52fadf7d22533734f2d34806311331bc424
+  PackStream: c91b9a88838bf810a655cb8c8f83000c64c9786a
+  SwiftNIO: bcf3d3933d419095ee792e8d3b8079e41a99737b
+  SwiftNIOConcurrencyHelpers: f4390bc20d6ba994468dc5cfacbbd0f86add9104
+  SwiftNIOFoundationCompat: 12e0610d4d2a202ee04a2528d8ef0330d4f30457
+  SwiftNIOSSL: 13a36d0fb6e742574a4acab4807f0aebb3fa9b46
+  SwiftNIOTLS: acb3279174477adab836874c30008ca9fced9fce
+  SwiftNIOTransportServices: 2b8c130457110ef198e10b544b070885815db6c2
 
-PODFILE CHECKSUM: a23cb36401e1efbe3a54c46a6ecb2e34514e6773
+PODFILE CHECKSUM: 35a0a3243dbcfe3f895164da3748932a634a678d
 
 COCOAPODS: 1.10.1

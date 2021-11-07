@@ -175,10 +175,38 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BoltProtocol/Bolt.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOAtomics/CNIOAtomics.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOBoringSSL/CNIOBoringSSL.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOBoringSSLShims/CNIOBoringSSLShims.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIODarwin/CNIODarwin.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOLinux/CNIOLinux.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOSHA1/CNIOSHA1.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MaterialActivityIndicator/MaterialActivityIndicator.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PackStream/PackStream.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIO/NIO.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOConcurrencyHelpers/NIOConcurrencyHelpers.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOFoundationCompat/NIOFoundationCompat.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOSSL/NIOSSL.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOTLS/NIOTLS.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOTransportServices/NIOTransportServices.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BoltProtocol/Bolt.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOAtomics/CNIOAtomics.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOBoringSSL/CNIOBoringSSL.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOBoringSSLShims/CNIOBoringSSLShims.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIODarwin/CNIODarwin.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOLinux/CNIOLinux.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CNIOSHA1/CNIOSHA1.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MaterialActivityIndicator/MaterialActivityIndicator.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PackStream/PackStream.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIO/NIO.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOConcurrencyHelpers/NIOConcurrencyHelpers.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOFoundationCompat/NIOFoundationCompat.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOSSL/NIOSSL.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOTLS/NIOTLS.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftNIOTransportServices/NIOTransportServices.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
